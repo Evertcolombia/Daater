@@ -12,10 +12,10 @@ def start():
     typer.secho("Bienvenido...", bg=typer.colors.GREEN, bold=True)
     
     typer.echo("Selecciona un archivo en el folder online:")
-    onlinefile = readfile('/root/pandas/online')
+    onlinefile = readfile('/root/online')
     
     typer.echo("Selecciona un archivo en el folder detail:")
-    detailfile = readfile('/root/pandas/detail')
+    detailfile = readfile('/root/detail')
 
     if onlinefile != None and detailfile != None:
         savename = typer.prompt("Ingrese el nombre de el archivo .csv a crear")
@@ -27,10 +27,13 @@ def start():
             typer.echo("Iniciando Comparacion")
 
             data.compare_dataFrames()
-            typer.echo("Creando Nuevo archivo.csv")
-            data.export_df_to_csv(savename + '.csv')
-            typer.echo("Pregrama Terminado Correctamente")
-            typer.echo("puede ver el nuevo archivo en {}".format(savename + '.csv'))
+            typer.echo("Creando Nuevo archivo .csv")
+            if '.csv' in savename:
+                data.export_df_to_csv(savename)
+            else:
+                data.export_df_to_csv(savename + '.csv')
+            typer.echo("Programa Terminado Correctamente")
+            typer.echo("puede ver el nuevo archivo en {}".format(savename))
 
     else:
         typer.echo("Intenta de nuevo")
@@ -59,7 +62,7 @@ def print_dirs(dirs):
 
 def exec_program(on_path, dt_path, savename):
     data = ReadFile("no_licencia")
-    path = '/root/pandas/'
+    path = '/root/'
     data.open_dataFrames(
         "{}online/{}".format(path, on_path),
         "{}detail/{}".format(path, dt_path)

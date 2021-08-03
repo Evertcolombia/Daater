@@ -37,7 +37,9 @@ class ReadFile():
             self_df - will contains the online dataFrame
             self_df2 - will contains the detail dataFrame
         """
+        print(path, path2)
         self._df = pd.read_csv(path, sep="~", header=0, engine='python')
+        print("paso1")
         self._df["exportador"] =  self._df["exportador"].astype(str)
         self._df["direccion_importador"] =  self._df["direccion_importador"].astype(str)
         self._df2 = pd.read_csv(path2, sep="~", header=0, engine='python')
@@ -80,5 +82,5 @@ class ReadFile():
     def export_df_to_csv(self, pathname):
         """ exports a dataframe as csv file """
         self._df.to_csv(pathname, sep='~', na_rep='', index=False)
-        print("The file has been saved! congrats")
+        print("El archivo fue guardado")
 
