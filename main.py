@@ -12,10 +12,10 @@ def start():
     typer.secho("Bienvenido...", bg=typer.colors.GREEN, bold=True)
     
     typer.echo("Selecciona un archivo en el folder online:")
-    onlinefile = readfile('/root/online')
+    onlinefile = readfile('/Dateer/online')
     
     typer.echo("Selecciona un archivo en el folder detail:")
-    detailfile = readfile('/root/detail')
+    detailfile = readfile('/Dateer/detail')
 
     if onlinefile != None and detailfile != None:
         savename = typer.prompt("Ingrese el nombre de el archivo .csv a crear")
@@ -62,7 +62,7 @@ def print_dirs(dirs):
 
 def exec_program(on_path, dt_path, savename):
     data = ReadFile("no_licencia")
-    path = '/root/'
+    path = '/Daater/'
     data.open_dataFrames(
         "{}online/{}".format(path, on_path),
         "{}detail/{}".format(path, dt_path)
