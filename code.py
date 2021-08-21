@@ -46,6 +46,8 @@ class ReadFile():
         """ Compare two dataframes """
         for i in range(0, len(self._df.index)):
             on_value = self._df.iloc[i][self._colId]
+            self._df.at[i, "detalle"] = 0 #  detalle column rows to 0
+
             if str(on_value) == "nan":
                 continue
 
@@ -81,4 +83,3 @@ class ReadFile():
         """ exports a dataframe as csv file """
         self._df.to_csv(pathname, sep='~', na_rep='', index=False)
         print("The file has been saved! congrats")
-
